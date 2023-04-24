@@ -4,3 +4,7 @@ v.01
 v.02
 - added logo
 - added phone icon and format
+
+v.03
+- added cart and badge
+- added responsive design to cart and logo

@@ -24,7 +24,12 @@ const Navbar = () => {
             <Image src ={logo} alt ="" />
         </div>
         <div className ={styles.item}>
-            right
+            <div className ={styles.menu}>Menu</div>
+            <div className ={styles.menu}>About</div>
+            <div className = {styles.cart}>
+              <Image src ="/img/cart.png" alt= "" width = "60" height = "60"/>
+              <div className ={styles.counter}>2</div>
+            </div>
         </div>
     
     </div>
