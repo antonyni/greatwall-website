@@ -1,0 +1,19 @@
+.container{
+    height: calc(100vh - 160px);
+    background-color:white;
+    position: relative;
+}
+.arrowContainer{
+    height:20%;
+    width:8%;
+    top:0;
+    bottom:0;
+    position:absolute;
+    margin:auto;
+
+}
+.arrowContainer img{
+    height:100px;
+    width:100px;
+}
+

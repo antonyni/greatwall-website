@@ -21,7 +21,7 @@ const Navbar = () => {
            </div>
         </div>
         <div className ={styles.item}>
-            <Image src ={logo} alt ="" />
+            <Image src ="/img/logo.png" width ="600" height = "500" alt ="" />
         </div>
         <div className ={styles.item}>
             <div className ={styles.menu}>Menu</div>
