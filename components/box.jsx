@@ -76,7 +76,12 @@ export default function ActionAreaCard({ section, food }) {
 
                   </Typography>
                 }
-                {dish.extraOptions.length > 0 ? (extra) : (none)}
+                {dish.extraOptions.length > 0 ? (
+                                    <Typography gutterBottom variant="h6">
+                                    Price: ${dish.prices[0].toFixed(2)}
+                
+                                  </Typography>
+                ) : (none)}
               </Box>
 
             </Drawer>
