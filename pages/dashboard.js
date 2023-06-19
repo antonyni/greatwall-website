@@ -186,8 +186,8 @@ export default function Dashboard({info}) {
     }
 
     export const getServerSideProps = async () => {
-        const response = await axios.get(`${HOST_URL}/api/product`);
-        const table = await axios.get(`${HOST_URL}/api/section`);
+        const response = await axios.get(`http://${VERCEL_URL}/api/product`);
+        const table = await axios.get(`http://${VERCEL_URL}/api/section`);
         return {
           props:{
             info:{food: response.data,
