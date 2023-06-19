@@ -22,7 +22,7 @@ import ActionAreaCard from '@/components/box';
 import axios from 'axios';
 import MainListItems from '@/components/listItems';
 const drawerWidth = 240;
-const HOST_URL = process.env.HOST_URL;
+const VERCEL_URL = process.env.VERCEL_URL;
 
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
