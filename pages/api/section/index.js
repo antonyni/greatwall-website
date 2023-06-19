@@ -2,7 +2,7 @@ import dbConnect from "../../../database/mongo";
 import Section from "../../../data/Section";
 export default async function handler(req,res){
     const {method} = req;
-    dbConnect();
+    await dbConnect();
     if (method ==="GET"){
         try{
             const section = await Section.find();

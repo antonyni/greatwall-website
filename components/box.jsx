@@ -21,7 +21,7 @@ export default function ActionAreaCard({ section, food }) {
         <div style={{ display: "flex", alignItems: "center", padding: "1rem 0 1rem 1rem" }}>
           <Image
             style={{ borderRadius: '50px', overflow: 'hidden', margin: "0 1rem 0 0" }}
-            src={`/../public/images/${title}.jpeg`}
+            src={`/../public/static/images/${title}.jpeg`}
             width={60}
             height={60}
             alt="Food Picture"
@@ -31,20 +31,20 @@ export default function ActionAreaCard({ section, food }) {
           </Typography>
         </div>
         {food.filter(dish => dish.type === title).map((dish) => (
-          <Card key={dish._id} sx={{ padding: 2, display: 'flex', alignItems: 'center',justifyContent:"space-between"}}>
-            <Box sx={{display:"flex",flexDirection:"column"}}>
+          <Card key={dish._id} sx={{ padding: 2, display: 'flex', alignItems: 'center', justifyContent: "space-between" }}>
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
               <CardActionArea>
                 <Typography gutterBottom variant="h6" sx={{ flex: 0 }}>{dish.title}</Typography>
               </CardActionArea>
               <Typography gutterBottom variant="body" color="secondary.main" sx={{ flex: 0 }}>{dish.prices.length > 1 ? (
-  <span>
-    Small: ${dish.prices[0].toFixed(2)} &nbsp;&nbsp;&nbsp; Large: ${dish.prices[1].toFixed(2)}
-  </span>
-) : (
-  <span>
-    ${dish.prices[0].toFixed(2)}
-  </span>
-)}</Typography>
+                <span>
+                  Small: ${dish.prices[0].toFixed(2)} &nbsp;&nbsp;&nbsp; Large: ${dish.prices[1].toFixed(2)}
+                </span>
+              ) : (
+                <span>
+                  ${dish.prices[0].toFixed(2)}
+                </span>
+              )}</Typography>
             </Box>
             <IconButton onClick={() => setIsDrawerOpen(true)} size='small' sx={{
               borderRadius: '50%',
@@ -77,10 +77,10 @@ export default function ActionAreaCard({ section, food }) {
                   </Typography>
                 }
                 {dish.extraOptions.length > 0 ? (
-                                    <Typography gutterBottom variant="h6">
-                                    Price: ${dish.prices[0].toFixed(2)}
-                
-                                  </Typography>
+                  <Typography gutterBottom variant="h6">
+                    Price: ${dish.prices[0].toFixed(2)}
+
+                  </Typography>
                 ) : (none)}
               </Box>
 

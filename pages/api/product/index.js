@@ -2,7 +2,7 @@ import dbConnect from "../../../database/mongo";
 import Product from "../../../data/Product";
 export default async function handler(req,res){
     const {method} = req;
-    dbConnect();
+    await dbConnect();
     if (method ==="GET"){
         try{
             const products = await Product.find();
