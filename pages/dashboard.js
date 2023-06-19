@@ -15,10 +15,12 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import { mainListItems, secondaryListItems } from '../components/listItems';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Copyright from '@/components/Copyright';
 import { LightDark,ColorModeContext } from '@/components/LightDark';
+import ActionAreaCard from '@/components/box';
+import axios from 'axios';
+import MainListItems from '@/components/listItems';
 const drawerWidth = 240;
 
 const AppBar = styled(MuiAppBar, {
@@ -67,7 +69,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
-export default function Dashboard() {
+export default function Dashboard({info}) {
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => {
         setOpen(!open);
@@ -153,9 +155,7 @@ export default function Dashboard() {
                         </Toolbar>
                         <Divider />
                         <List component="nav">
-                            {mainListItems}
-                            <Divider sx={{ my: 1 }} />
-                            {secondaryListItems}
+                            <MainListItems table = {info.table}/>
                         </List>
                     </Drawer>
                     <Box
@@ -166,43 +166,15 @@ export default function Dashboard() {
                                     ? theme.palette.grey[100]
                                     : theme.palette.grey[900],
                             flexGrow: 1,
-                            height: '100vh',
+                            minheight: '100vh',
                             overflow: 'auto',
                         }}
                     >
                         <Toolbar />
                         <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-                            <Grid container spacing={3}>
-                                {/* Chart */}
-                                <Grid item xs={12} md={8} lg={9}>
-                                    <Paper
-                                        sx={{
-                                            p: 2,
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            height: 240,
-                                        }}
-                                    >
-                                    </Paper>
-                                </Grid>
-                                {/* Recent Deposits */}
-                                <Grid item xs={12} md={4} lg={3}>
-                                    <Paper
-                                        sx={{
-                                            p: 2,
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            height: 240,
-                                        }}
-                                    >
-                                    </Paper>
-                                </Grid>
-                                {/* Recent Orders */}
-                                <Grid item xs={12}>
-                                    <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                                    </Paper>
-                                </Grid>
-                            </Grid>
+                        {info.table.map((section)=>
+                            <ActionAreaCard key = {section._id} section = {section} food = {info.food}/>
+                        )}
                             <Copyright sx={{ pt: 4 }} />
                         </Container>
                     </Box>
@@ -211,3 +183,14 @@ export default function Dashboard() {
             </ColorModeContext.Provider>
         );
     }
+
+    export const getServerSideProps = async () => {
+        const response = await axios.get('http://localhost:3000/api/product');
+        const table = await axios.get('http://localhost:3000/api/section');
+        return {
+          props:{
+            info:{food: response.data,
+                table: table.data,},
+          }
+        };
+      }

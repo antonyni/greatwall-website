@@ -1,5 +1,6 @@
-import Head from 'next/head'
-import Featured from "../components/Featured"
+import Head from 'next/head';
+import Featured from "../components/Featured";
+
  
 export default function Home() {
   return (
@@ -11,6 +12,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Featured/>
+      
     </>
   )
 }
+
