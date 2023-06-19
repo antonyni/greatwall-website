@@ -22,6 +22,7 @@ import ActionAreaCard from '@/components/box';
 import axios from 'axios';
 import MainListItems from '@/components/listItems';
 const drawerWidth = 240;
+const HOST_URL = process.env.HOST_URL;
 
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
@@ -185,8 +186,8 @@ export default function Dashboard({info}) {
     }
 
     export const getServerSideProps = async () => {
-        const response = await axios.get('http://localhost:3000/api/product');
-        const table = await axios.get('http://localhost:3000/api/section');
+        const response = await axios.get(`${HOST_URL}/api/product`);
+        const table = await axios.get(`${HOST_URL}/api/section`);
         return {
           props:{
             info:{food: response.data,
