@@ -50,8 +50,7 @@ export default function ActionAreaCard ({ section, food }) {
       `${quantity} x ` + value.substring(0,value.lastIndexOf(" ")),
       price: total
     }
-    const put = await axios.put(`http://${VERCEL_URL}/api/order`,obj);
-    console.log(put);
+    console.log(obj);
   }
 
   return (
