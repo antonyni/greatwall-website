@@ -2,5 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
 }
+module.exports = {
+  publicRuntimeConfig: {
+    VERCEL_URL: process.env.VERCEL_URL,
+  },
+};
 
-module.exports = nextConfig

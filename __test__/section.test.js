@@ -1,5 +1,21 @@
 import handler from '../pages/api/section/index';
 import Section from '../data/Section';
+import Order from '../data/Order';
+
+// jest.mock('../database/mongo', () => ({
+//   __esModule: true,
+//   default: jest.fn(),
+// }));
+
+jest.mock('../data/Order', () => ({
+  __esModule: true,
+  default: {
+    find: jest.fn(),
+    create: jest.fn(),
+  },
+}));
+
+
 
 jest.mock('../database/mongo', () => ({
   __esModule: true,

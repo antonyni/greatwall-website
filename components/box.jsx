@@ -46,11 +46,17 @@ export default function ActionAreaCard ({ section, food }) {
     event.preventDefault();
     const total = (Number(value.substring(value.lastIndexOf(" ")+1,value.length))+Number(extraValue.substring(extraValue.lastIndexOf(" ")+1,extraValue.length)))*quantity; 
     const obj = {
-      order: extraValue.length > 0 ?`${quantity} x ` + value.substring(0,value.lastIndexOf(" "))+ " with " +extraValue.substring(0,extraValue.lastIndexOf(" ")):
+      "order": extraValue.length > 0 ?`${quantity} x ` + value.substring(0,value.lastIndexOf(" "))+ " with " +extraValue.substring(0,extraValue.lastIndexOf(" ")):
       `${quantity} x ` + value.substring(0,value.lastIndexOf(" ")),
-      price: total
+      "total": total
     }
-    console.log(obj);
+    await axios.post(`http://localhost:3000/api/order`,{
+      "order":["steve"],
+      "total":30,
+      "foodMode":"delivery",
+      "phoneNumber":21111111,
+      "paid":true
+  })
   }
 
   return (

@@ -11,6 +11,8 @@ jest.mock('../data/Product', () => ({
   default: {
     find: jest.fn(),
     create: jest.fn(),
+    deleteOne: jest.fn(),
+    findOneAndUpdate: jest.fn(),
   },
 }));
 
@@ -64,4 +66,37 @@ describe('handler', () => {
     expect(res.status).toHaveBeenCalledWith(500);
     expect(res.json).toHaveBeenCalledWith(mockError);
   });
+  it('should delete a product on DELETE', async () => {
+    const mockProductId = 4;
+    const mockDeletedProduct = { _id: mockProductId, name: 'Product 4' };
+    Product.deleteOne.mockResolvedValue(mockDeletedProduct);
+    
+    req.method = 'DELETE';
+    req.body = { _id: mockProductId };
+    
+    await handler(req, res);
+    
+    expect(Product.deleteOne).toHaveBeenCalledWith({ _id: mockProductId });
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.json).toHaveBeenCalledWith(mockDeletedProduct);
+    });
+
+    it('should update a product on UPDATE', async () => {
+      const mockProductId = 4;
+      const mockUpdatedProduct = { id: mockProductId, name: 'Updated Product' };
+      Product.findOneAndUpdate.mockResolvedValue(mockUpdatedProduct);
+      
+      req.method = 'UPDATE';
+      req.body = { id: mockProductId, name: 'Updated Product' };
+      
+      await handler(req, res);
+      
+      expect(Product.findOneAndUpdate).toHaveBeenCalledWith(
+      { id: mockProductId },
+      { $set: req.body },
+      { new: true }
+      );
+      expect(res.status).toHaveBeenCalledWith(200);
+      expect(res.json).toHaveBeenCalledWith(mockUpdatedProduct);
+      });
 });
