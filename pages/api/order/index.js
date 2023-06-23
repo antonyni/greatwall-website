@@ -50,6 +50,16 @@ export default async function handler(req,res){
           res.status(500).json({ error: "Internal server error" });
         }
       }
+      if (method === "DELETE") {
+        try {
+            const { _id } = req.body;
+            console.log(_id);
+            const deletedOrder = await Order.deleteOne( {_id} );
+            res.status(200).json(deletedOrder);
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    }
 
 
 }
