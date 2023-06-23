@@ -34,7 +34,7 @@ const BurgerButtonDrawer = () => {
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
         >
-            <Image src="/../public/static/images/x-logo.png" width={18} height={18} ></Image>
+            <Image src="/static/images/x-logo.png" width={18} height={18} ></Image>
             <List sx={{paddingBottom:"0"}}>
                 {['Home', 'Pickup','Help','Sign Up or Sign In'].map((text, index) => (
                     <>
@@ -81,7 +81,7 @@ const BurgerButtonDrawer = () => {
                 sx={{ ml:4.4,mr: -.05, transform: "translateY(1%)"}}
                 onClick={toggleDrawer(true)}
             >
-            <Image src="/../public/static/images/burger-logo.png" width={27} height={22} ></Image>
+            <Image src="/static/images/burger-logo.png" width={27} height={22} ></Image>
             </IconButton>
             <Drawer
             anchor="left"

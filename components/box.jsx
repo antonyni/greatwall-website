@@ -66,7 +66,7 @@ export default function ActionAreaCard ({ section, food }) {
         <div style={{ display: "flex", alignItems: "center", padding: "1rem 0 1rem 1rem" }}>
           <Image
             style={{ borderRadius: '50px', overflow: 'hidden', margin: "0 1rem 0 0" }}
-            src={`/../public/static/images/${title}.jpeg`}
+            src={`/static/images/${title}.jpeg`}
             width={60}
             height={60}
             alt="Food Picture"

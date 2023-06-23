@@ -14,7 +14,7 @@ export default function MainAppBar() {
                 <Toolbar sx={{ backgroundColor: "white" }}>
                     <BurgerButtonDrawer/>
                     <Box position="relative" width="100px" height="60px" sx={{transform:"translateY(-20%)"}} >
-                        <Image src="/../public/static/images/doordash-logo.png" sx={{overflow:"hidden"}} width={157} height={85}  />
+                        <Image src="/static/images/doordash-logo.png" sx={{overflow:"hidden"}} width={157} height={85}  />
                     </Box>
                 </Toolbar>
             </AppBar>
